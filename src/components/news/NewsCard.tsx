@@ -25,13 +25,7 @@ export default function NewsCard({
         (article as any).image ||
         "https://placehold.co/800x500?text=News";
 
-    const tags =
-        Array.isArray(article.ai_tags)
-            ? article.ai_tags
-            : typeof article.ai_tags === "string"
-            ? article.ai_tags.split(",")
-            : [];
-
+    const tags = article.ai_tags ?? [];
     return (
 
         <Card className="overflow-hidden rounded-2xl border-0 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">

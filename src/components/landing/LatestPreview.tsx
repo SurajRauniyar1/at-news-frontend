@@ -59,6 +59,7 @@ export default function LatestPreview() {
                         <NewsCard
                             key={article.id}
                             article={article}
+                            bookmarked={false}
                         />
 
                     ))}

@@ -19,15 +19,7 @@ export default function AISummaryDialog({
     article,
 }: Props) {
 
-    const tags =
-        Array.isArray(article.ai_tags)
-            ? article.ai_tags
-            : typeof article.ai_tags === "string"
-            ? article.ai_tags
-                  .split(",")
-                  .map((tag) => tag.trim())
-                  .filter(Boolean)
-            : [];
+    const tags = article.ai_tags ?? [];
 
     const image =
         article.image_url ||
@@ -37,9 +29,12 @@ export default function AISummaryDialog({
 
         <Dialog>
 
-            <DialogTrigger asChild>
+            <DialogTrigger>
 
-                <button className="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-700">
+                <button
+                    type="button"
+                    className="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
+                >
 
                     <Brain className="mr-2 h-4 w-4" />
 
@@ -69,9 +64,9 @@ export default function AISummaryDialog({
 
                     </DialogHeader>
 
-                    <div className="mb-6 flex flex-wrap items-center gap-3">
+                    <div className="mb-6 flex flex-wrap gap-3">
 
-                        <Badge className="px-3 py-1">
+                        <Badge>
 
                             {article.category}
 
@@ -105,11 +100,11 @@ export default function AISummaryDialog({
 
                         </h3>
 
-                        <div className="whitespace-pre-wrap text-base leading-8 text-slate-700">
+                        <p className="whitespace-pre-wrap leading-8 text-slate-700">
 
                             {article.summary || "No AI summary available."}
 
-                        </div>
+                        </p>
 
                     </div>
 

@@ -18,9 +18,9 @@ export default function BookmarksPage() {
         return <Loader />;
     }
 
-    const bookmarkedIds = new Set(
-        (data ?? []).map((article: any) => article.id)
-    );
+    const bookmarkedIds = new Set<number>(
+    (data ?? []).map((article: any) => Number(article.id))
+);
 
     return (
 
